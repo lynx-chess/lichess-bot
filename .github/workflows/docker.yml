@@ -43,10 +43,7 @@ jobs:
           build-args: VARIANT=-alpine
           push: true
           tags: |
-            ${{ vars.DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:alpine
-            ${{ vars.DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:${{ env.version }}-alpine
-            ${{ env.GB_REGISTRY }}/${{ vars.GHCR_DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:alpine
-            ${{ env.GB_REGISTRY }}/${{ vars.GHCR_DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:${{ env.version }}-alpine
+            test:alpine
 
       - name: build and push fat image
         uses: docker/build-push-action@v6
@@ -58,7 +55,4 @@ jobs:
             linux/arm64
           push: true
           tags: |
-            ${{ vars.DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:latest
-            ${{ vars.DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:${{ env.version }}
-            ${{ env.GB_REGISTRY }}/${{ vars.GHCR_DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:latest
-            ${{ env.GB_REGISTRY }}/${{ vars.GHCR_DOCKER_ORGANIZATION }}/${{ vars.DOCKER_IMG }}:${{ env.version }}
+            test:latest
